@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9eff4d07-f301-4a86-a119-4a8ce82331a6",
+		"_postman_id": "5485337f-a6c3-410d-b49b-d21a1381be61",
 		"name": "Pet creation/updating/deleting by unauthorized user",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -223,7 +223,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": 113,\r\n  \"category\": {\r\n    \"id\": 223,\r\n    \"name\": \"NameCategory45\"\r\n  },\r\n  \"name\": \"dogcat34\",\r\n  \"photoUrls\": [\r\n    \"http://petstore.swagger.io/oauth/imageso/dog12.png\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"tag43\"\r\n    }\r\n  ],\r\n  \"status\": \"sold\"\r\n}"
+					"raw": "{\r\n  \"id\": 111,\r\n  \"category\": {\r\n    \"id\": 223,\r\n    \"name\": \"NameCategory45\"\r\n  },\r\n  \"name\": \"dogcat34\",\r\n  \"photoUrls\": [\r\n    \"http://petstore.swagger.io/oauth/imageso/dog12.png\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"tag43\"\r\n    }\r\n  ],\r\n  \"status\": \"sold\"\r\n}"
 				},
 				"url": {
 					"raw": "http://petstore.swagger.io/v2/pet",
@@ -247,15 +247,15 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "00a5fc3f-e85a-4bf0-9178-2c2683f71d6b",
+						"id": "803c1cc7-12b5-448a-ba2f-e201274a5971",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"Body contains category name, pet name and url\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"dogcat\",\"NameCategory\",\"http://petstore.swagger.io/oauth/imageso/dog1.png\");",
+							"pm.test(\"Body was not changed: name, pet name and url\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"catdog\",\"Catename\",\"http://petstore.swagger.io/oauth/imageso/dog.png\");",
 							"});",
 							"",
 							"",
@@ -310,16 +310,16 @@
 			"response": []
 		},
 		{
-			"name": "Delete a pet",
+			"name": "Delete a pet by unauthorized user",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "fd26269c-5b64-43eb-be8b-6712e62c352f",
+						"id": "1089ce29-18eb-44e2-ad4e-a585ab18c2df",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
 							"});"
 						]
 					}
@@ -327,19 +327,7 @@
 			],
 			"request": {
 				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "11111111",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "testDev",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "DELETE",
 				"header": [
@@ -379,11 +367,11 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "55ee13b9-084f-477c-9fb9-85d76a6f586e",
+						"id": "5700c455-8963-4354-8250-5fa8ff56e5ce",
 						"type": "text/javascript",
 						"exec": [
-							"pm.test(\"Deleted pet is not exist\", function () {",
-							"    pm.response.to.have.status(404);",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
 							"});"
 						]
 					}
