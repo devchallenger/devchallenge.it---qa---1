@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cdbf022b-8423-4c34-9ca7-e1daa7abdb94",
+		"_postman_id": "27469d8b-1b4a-4252-9b40-e41d4c333eda",
 		"name": "Pet creation\\updating\\deleting",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -443,69 +443,6 @@
 					]
 				},
 				"description": "Returns a single pet"
-			},
-			"response": []
-		},
-		{
-			"name": "Update not existing pet",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "522177ec-97c8-4d53-9173-2fbe742623f4",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 404\", function () {",
-							"    pm.response.to.have.status(404);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "11111111",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "testDev",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/xml, application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"id\": 111,\r\n  \"category\": {\r\n    \"id\": 223,\r\n    \"name\": \"NameCategory34\"\r\n  },\r\n  \"name\": \"dogcat34\",\r\n  \"photoUrls\": [\r\n    \"http://petstore.swagger.io/oauth/imageso/dog34.png\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"tag43\"\r\n    }\r\n  ],\r\n  \"status\": \"sold\"\r\n}"
-				},
-				"url": {
-					"raw": "http://petstore.swagger.io/v2/pet",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
-					],
-					"path": [
-						"v2",
-						"pet"
-					]
-				}
 			},
 			"response": []
 		}
