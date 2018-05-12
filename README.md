@@ -1,4 +1,4 @@
-Repository includes JSON files with the tests and Bugs.xlsx filt with the bug reports
+Repository includes JSON files with the tests, Bugs.xlsx file with the bug reports, test files and readme file.
 To run the tests your should set up Postman(https://www.getpostman.com/apps)
 After Postman run import JSON files to it(Import as a file)
 Click on Runner and select a folder with the test scenarios you want to run:
