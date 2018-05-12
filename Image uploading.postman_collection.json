@@ -1,555 +1,639 @@
 {
 	"info": {
-		"_postman_id": "c829c3bd-27e0-4c70-b355-c28b12440bfe",
+		"_postman_id": "8237275c-4955-4109-b7ab-46a637fe6f2e",
 		"name": "Image uploading",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Pre-condditions: Create a user",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/xml, application/json"
+			"name": "Pre-conditions",
+			"description": "",
+			"item": [
+				{
+					"name": "Pre-condditions: Create a user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml, application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 69,\r\n  \"username\": \"TestDev\",\r\n  \"firstName\": \"Rew\",\r\n  \"lastName\": \"Wer\",\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"11111111\",\r\n  \"phone\": \"+234234234234\",\r\n  \"userStatus\": 1\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/user",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user"
+							]
+						},
+						"description": "This can only be done by the logged in user."
 					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"id\": 69,\r\n  \"username\": \"TestDev\",\r\n  \"firstName\": \"Rew\",\r\n  \"lastName\": \"Wer\",\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"11111111\",\r\n  \"phone\": \"+234234234234\",\r\n  \"userStatus\": 1\r\n}"
-				},
-				"url": {
-					"raw": "http://petstore.swagger.io/v2/user",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
-					],
-					"path": [
-						"v2",
-						"user"
-					]
-				},
-				"description": "This can only be done by the logged in user."
-			},
-			"response": []
-		},
-		{
-			"name": "Pre-condditions: Create the second user",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "698c1b3f-add6-416f-b375-4f56e287a8b9",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/xml, application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"id\": 70,\r\n  \"username\": \"TestDev1\",\r\n  \"firstName\": \"Rew\",\r\n  \"lastName\": \"Wer\",\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"11111111\",\r\n  \"phone\": \"+234234234234\",\r\n  \"userStatus\": 1\r\n}"
-				},
-				"url": {
-					"raw": "http://petstore.swagger.io/v2/user",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
-					],
-					"path": [
-						"v2",
-						"user"
-					]
-				},
-				"description": "This can only be done by the logged in user."
-			},
-			"response": []
-		},
-		{
-			"name": "Pre-conditions: Add a new pet to the store by the first user",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "761ec881-3c0b-474c-a868-378666c6ea5c",
-						"type": "text/javascript",
-						"exec": [
-							"",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						]
-					}
+					"response": []
 				},
 				{
-					"listen": "prerequest",
-					"script": {
-						"id": "d4e85504-a964-4c63-9b9e-8217f55ee84d",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
+					"name": "Pre-condditions: Create the second user",
+					"event": [
 						{
-							"key": "password",
-							"value": "11111111",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"id": "698c1b3f-add6-416f-b375-4f56e287a8b9",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml, application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 70,\r\n  \"username\": \"TestDev1\",\r\n  \"firstName\": \"Rew\",\r\n  \"lastName\": \"Wer\",\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"11111111\",\r\n  \"phone\": \"+234234234234\",\r\n  \"userStatus\": 1\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/user",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"user"
+							]
+						},
+						"description": "This can only be done by the logged in user."
+					},
+					"response": []
+				},
+				{
+					"name": "Pre-conditions: Add a new pet to the store by the first user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "761ec881-3c0b-474c-a868-378666c6ea5c",
+								"type": "text/javascript",
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
 						},
 						{
-							"key": "username",
-							"value": "TestDev",
-							"type": "string"
+							"listen": "prerequest",
+							"script": {
+								"id": "d4e85504-a964-4c63-9b9e-8217f55ee84d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/xml, application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "\r\n{\r\n  \"id\":111,\r\n  \"category\": {\r\n    \"id\": 222,\r\n    \"name\": \"Catename\"\r\n  },\r\n  \"name\": \"catdog\",\r\n  \"photoUrls\": [\"http://petstore.swagger.io/oauth/imageso/dog.png\"],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"tag33\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n \r\n}\r\n"
-				},
-				"url": {
-					"raw": "http://petstore.swagger.io/v2/pet",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
 					],
-					"path": [
-						"v2",
-						"pet"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "uploads an image by the first user",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "beefdb52-bb8c-4d83-9117-7837d115236e",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "testDev",
-							"type": "string"
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "11111111",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "TestDev",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "11111111",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "file",
-							"type": "file"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
-					],
-					"path": [
-						"v2",
-						"pet",
-						"111",
-						"uploadImage"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Find uploaded file by the name",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "876a5ce5-8c0d-4693-b8b3-064e7dba87f2",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "testDev",
-							"type": "string"
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml, application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"id\":111,\r\n  \"category\": {\r\n    \"id\": 222,\r\n    \"name\": \"Catename\"\r\n  },\r\n  \"name\": \"catdog\",\r\n  \"photoUrls\": [\"http://petstore.swagger.io/oauth/imageso/dog.png\"],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"tag33\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n \r\n}\r\n"
 						},
-						{
-							"key": "password",
-							"value": "11111111",
-							"type": "string"
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://petstore.swagger.io/1111.jpg",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
-					],
-					"path": [
-						"1111.jpg"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "uploads not image by the first user",
-			"event": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "6332f0a6-1c35-4beb-8e35-e5d14cec7120",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Unsupported Media Type: 415\", function () {",
-							"    pm.response.to.have.status(415);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
+					"name": "uploads an image by the first user",
+					"event": [
 						{
-							"key": "username",
-							"value": "testDev",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"id": "beefdb52-bb8c-4d83-9117-7837d115236e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "testDev",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "11111111",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "11111111",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "file",
-							"type": "file"
-						}
-					]
-				},
-				"url": {
-					"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
-					],
-					"path": [
-						"v2",
-						"pet",
-						"111",
-						"uploadImage"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "uploads without any file by the first user",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "33c0de24-63ea-4b47-a4c2-fe4c2790a151",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Bad request: 400\", function () {",
-							"    pm.response.to.have.status(400);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "testDev",
-							"type": "string"
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "11111111",
-							"type": "string"
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"111",
+								"uploadImage"
+							]
 						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
 					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "file",
-							"type": "file"
-						}
-					]
+					"response": []
 				},
-				"url": {
-					"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
-					],
-					"path": [
-						"v2",
-						"pet",
-						"111",
-						"uploadImage"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "uploads an image by another user",
-			"event": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "1dd474bd-545c-4a85-bdbe-d2dfd0aebfaf",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 403\", function () {",
-							"    pm.response.to.have.status(403);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
+					"name": "Find uploaded file by the name",
+					"event": [
 						{
-							"key": "username",
-							"value": "testDev1",
-							"type": "string"
+							"listen": "test",
+							"script": {
+								"id": "876a5ce5-8c0d-4693-b8b3-064e7dba87f2",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "testDev",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "11111111",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "11111111",
-							"type": "string"
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/1111.jpg",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"1111.jpg"
+							]
 						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
 					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "file",
-							"type": "file"
-						}
-					]
+					"response": []
 				},
-				"url": {
-					"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
+				{
+					"name": "uploads not image by the first user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6332f0a6-1c35-4beb-8e35-e5d14cec7120",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Unsupported Media Type: 415\", function () {",
+									"    pm.response.to.have.status(415);",
+									"});"
+								]
+							}
+						}
 					],
-					"path": [
-						"v2",
-						"pet",
-						"111",
-						"uploadImage"
-					]
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "testDev",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "11111111",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"111",
+								"uploadImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploads without any file by the first user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "33c0de24-63ea-4b47-a4c2-fe4c2790a151",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Bad request: 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "testDev",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "11111111",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"111",
+								"uploadImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploads an image by another user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1dd474bd-545c-4a85-bdbe-d2dfd0aebfaf",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "testDev1",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "11111111",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"111",
+								"uploadImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploads an image by unauthorized user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c5146a8b-ce08-475e-b601-5c36f82f4da3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"value": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"111",
+								"uploadImage"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "uploads an image by unauthorized user",
-			"event": [
+			"name": "Post-conditions",
+			"description": "",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "c5146a8b-ce08-475e-b601-5c36f82f4da3",
-						"type": "text/javascript",
-						"exec": [
-							"pm.test(\"Status code is 401\", function () {",
-							"    pm.response.to.have.status(401);",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json"
-					},
-					{
-						"key": "Content-Type",
-						"value": "multipart/form-data"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
+					"name": "Post-conditions: Delete a pet by the first user",
+					"event": [
 						{
-							"key": "file",
-							"type": "file"
+							"listen": "test",
+							"script": {
+								"id": "8d5d65b6-8ec7-46a4-ba20-f808245819a7",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
 						}
-					]
-				},
-				"url": {
-					"raw": "http://petstore.swagger.io/v2/pet/111/uploadImage",
-					"protocol": "http",
-					"host": [
-						"petstore",
-						"swagger",
-						"io"
 					],
-					"path": [
-						"v2",
-						"pet",
-						"111",
-						"uploadImage"
-					]
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "testDev",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "11111111",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/xml, application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/112",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"112"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
