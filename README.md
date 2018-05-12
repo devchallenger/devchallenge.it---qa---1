@@ -5,3 +5,5 @@ Click on Runner and select a folder with the test scenarios you want to run:
 - Pet creation-updating-deleting.postman_collection.json - Smoke scenario for checking the main functionality
 - Create-update a pet with invalid data.postman_collection.json - Negative scenario for checking server response after request with invalid data 
 - Pet creation-updating-deleting by unauthorized user.postman_collection.json/Updating-Deleling by another user.postman_collection.json - Negative scenario for checking server response after activities without the rights
+- Image uploading.postman_collection.json - Checking uploading images feature
+- Delete an order by another user.postman_collection.json - Bonus task for checking major user activity witout rights
