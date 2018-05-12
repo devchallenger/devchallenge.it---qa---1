@@ -1,0 +1,438 @@
+{
+	"info": {
+		"_postman_id": "9eff4d07-f301-4a86-a119-4a8ce82331a6",
+		"name": "Pet creation/updating/deleting by unauthorized user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pre-condditions: Create a user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "20ded038-b18b-4b86-b7d7-30286b2dafc5",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml, application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 69,\r\n  \"username\": \"TestDev\",\r\n  \"firstName\": \"Rew\",\r\n  \"lastName\": \"Wer\",\r\n  \"email\": \"test@test.com\",\r\n  \"password\": \"11111111\",\r\n  \"phone\": \"+234234234234\",\r\n  \"userStatus\": 1\r\n}"
+				},
+				"url": {
+					"raw": "http://petstore.swagger.io/v2/user",
+					"protocol": "http",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user"
+					]
+				},
+				"description": "This can only be done by the logged in user."
+			},
+			"response": []
+		},
+		{
+			"name": "Preconditions: Add a new pet to the store by created user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "761ec881-3c0b-474c-a868-378666c6ea5c",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d4e85504-a964-4c63-9b9e-8217f55ee84d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "11111111",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "TestDev",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml, application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n  \"id\":111,\r\n  \"category\": {\r\n    \"id\": 222,\r\n    \"name\": \"Catename\"\r\n  },\r\n  \"name\": \"catdog\",\r\n  \"photoUrls\": [\"http://petstore.swagger.io/oauth/imageso/dog.png\"],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"tag33\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n \r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://petstore.swagger.io/v2/pet",
+					"protocol": "http",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new pet to the store by unauthorized user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "be43b652-aaf8-4fe5-a7d8-5fde57691c72",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"Unauthorized 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d4e85504-a964-4c63-9b9e-8217f55ee84d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml, application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n  \"id\":113,\r\n  \"category\": {\r\n    \"id\": 222,\r\n    \"name\": \"Catename2\"\r\n  },\r\n  \"name\": \"catdog2\",\r\n  \"photoUrls\": [\"http://petstore.swagger.io/oauth/imageso/dog3.png\"],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"tag36\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n \r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://petstore.swagger.io/v2/pet",
+					"protocol": "http",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an existing pet by unauthorized user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "45b4118b-5c19-4d70-a8c0-ed8c1d0f3651",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Unauthorized 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml, application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 113,\r\n  \"category\": {\r\n    \"id\": 223,\r\n    \"name\": \"NameCategory45\"\r\n  },\r\n  \"name\": \"dogcat34\",\r\n  \"photoUrls\": [\r\n    \"http://petstore.swagger.io/oauth/imageso/dog12.png\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"tag43\"\r\n    }\r\n  ],\r\n  \"status\": \"sold\"\r\n}"
+				},
+				"url": {
+					"raw": "http://petstore.swagger.io/v2/pet",
+					"protocol": "http",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find updated pet by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00a5fc3f-e85a-4bf0-9178-2c2683f71d6b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body contains category name, pet name and url\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"dogcat\",\"NameCategory\",\"http://petstore.swagger.io/oauth/imageso/dog1.png\");",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "11111111",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testDev",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml, application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://petstore.swagger.io/v2/pet/111",
+					"protocol": "http",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"111"
+					]
+				},
+				"description": "Returns a single pet"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a pet",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fd26269c-5b64-43eb-be8b-6712e62c352f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "11111111",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testDev",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml, application/json"
+					},
+					{
+						"key": "api_key",
+						"value": "special-key"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://petstore.swagger.io/v2/pet/111",
+					"protocol": "http",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"111"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find deleted pet by ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "55ee13b9-084f-477c-9fb9-85d76a6f586e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Deleted pet is not exist\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "11111111",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testDev",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/xml, application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://petstore.swagger.io/v2/pet/111",
+					"protocol": "http",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"111"
+					]
+				},
+				"description": "Returns a single pet"
+			},
+			"response": []
+		}
+	]
+}
